@@ -88,15 +88,36 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         if (isValid) {
-            // Show toast
-            showToast('Mensaje enviado exitosamente. Te contactaré pronto.');
-            // Reset form
-            contactForm.reset();
-            // Clear errors and enable button
-            nameError.textContent = '';
-            emailError.textContent = '';
-            messageError.textContent = '';
-            checkFormValidity();
+            const formData = {
+                name: name,
+                email: email,
+                message: message
+            };
+
+            fetch('https://api.lizamarey.com/message', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(formData)
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Success:', data);
+                // Show toast
+                showToast('Mensaje enviado exitosamente. Te contactaré pronto.');
+                // Reset form
+                contactForm.reset();
+                // Clear errors and enable button
+                nameError.textContent = '';
+                emailError.textContent = '';
+                messageError.textContent = '';
+                checkFormValidity();
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+                showToast('Hubo un error al enviar el mensaje. Inténtalo de nuevo.', true);
+            });
         } else {
             // Show errors
             alert('Por favor corrige los siguientes errores:\n\n' + errors.join('\n'));
