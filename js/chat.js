@@ -66,7 +66,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({
-                    id: sessionId,
+                    session_id: sessionId,
                     message: message
                 })
             });
