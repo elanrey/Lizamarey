@@ -60,7 +60,7 @@ document.addEventListener('DOMContentLoaded', function() {
         addMessage(message, true);
 
         try {
-            const response = await fetch('/api/v1/chat', {
+            const response = await fetch('https://api.lizamarey.com/chat', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
