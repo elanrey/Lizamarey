@@ -73,8 +73,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
             const result = await response.json();
 
-            // Assuming the API returns {message: "response text"}
-            addMessage(result.message);
+            // Assuming the API returns {output: "response text"}
+            addMessage(result.output);
 
         } catch (error) {
             console.error('Error sending message:', error);
