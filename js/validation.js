@@ -89,9 +89,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (isValid) {
             const formData = {
-                name: name,
-                email: email,
-                message: message
+                nombre: name,
+                mail: email,
+                mensaje: message
             };
 
             fetch('https://api.lizamarey.com/message', {
