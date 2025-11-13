@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', function() {
-    console.log('Chat script loaded');
     const sessionId = crypto.randomUUID();
     let chatOpen = false;
     const messages = [];
