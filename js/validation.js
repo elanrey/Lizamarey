@@ -37,10 +37,13 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     emailInput.addEventListener('blur', () => {
-        const email = emailInput.value.trim();
+        const value = emailInput.value.trim();
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailRegex.test(email)) {
-            emailError.textContent = 'Por favor ingresa un correo electrónico válido.';
+        const phoneValue = value.replace(/\s/g, '');
+        const phoneRegex = /^\d{10,15}$/;
+
+        if (!emailRegex.test(value) && !phoneRegex.test(phoneValue)) {
+            emailError.textContent = 'Por favor ingresa un correo electrónico válido o un número de teléfono.';
         } else {
             emailError.textContent = '';
         }
@@ -74,11 +77,13 @@ document.addEventListener('DOMContentLoaded', () => {
             errors.push('El nombre debe tener al menos 2 caracteres.');
         }
 
-        // Check email
+        // Check email/phone
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailRegex.test(email)) {
+        const phoneValue = email.replace(/\s/g, '');
+        const phoneRegex = /^\d{10,15}$/;
+        if (!emailRegex.test(email) && !phoneRegex.test(phoneValue)) {
             isValid = false;
-            errors.push('Por favor ingresa un correo electrónico válido.');
+            errors.push('Por favor ingresa un correo electrónico válido o un número de teléfono.');
         }
 
         // Check message
